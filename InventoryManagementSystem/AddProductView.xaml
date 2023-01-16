@@ -1,0 +1,99 @@
+﻿<UserControl x:Class="InventoryManagementSystem.AddProductView"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:InventoryManagementSystem"
+             mc:Ignorable="d" 
+             d:DesignHeight="570" d:DesignWidth="800">
+    <Grid>
+
+        <TextBox
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                VerticalAlignment="Top"
+                Height="50"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto"
+                materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
+                materialDesign:HintAssist.Hint="Name"
+                Margin="80,30,450,10"
+                Text="{Binding Product.Name, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                VerticalAlignment="Top"
+                Height="50"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto"
+                materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
+                materialDesign:HintAssist.Hint="Status"
+                Margin="450,30,80,10"
+                Text="{Binding Product.Status, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                VerticalAlignment="Top"
+                Height="50"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto"
+                materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
+                materialDesign:HintAssist.Hint="Price"
+                Margin="80,130,450,10"
+                Text="{Binding Product.Price, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                VerticalAlignment="Top"
+                Height="50"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto"
+                materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
+                materialDesign:HintAssist.Hint="Quantity"
+                Margin="450,130,80,10"
+                Text="{Binding Product.Quantity, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <ComboBox
+            Grid.Row="0"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}"
+            materialDesign:HintAssist.Hint="Select Category"
+            VerticalAlignment="Top"
+            ItemsSource="{Binding Categories}"
+            Height="50"
+            materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
+            Margin="80,230,450,10"
+            SelectedItem="{Binding Category,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                VerticalAlignment="Top"
+                Height="50"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto"
+                materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
+                materialDesign:HintAssist.Hint="Description"
+                Margin="450,230,80,10"
+                Text="{Binding Product.Description, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <ComboBox
+            Grid.Row="0"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}"
+            materialDesign:HintAssist.Hint="Select Warehouse"
+            ItemsSource="{Binding Warehouses}"
+            Height="50"
+            materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
+            Margin="80,150,450,10"
+            SelectedItem="{Binding Warehouse,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Button
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Height="50"
+                ToolTip=""
+                Background="#302b63"
+                Foreground="WhiteSmoke"
+                Content="Add"
+                Margin="300,350,300,10"
+                materialDesign:ButtonAssist.CornerRadius="7"
+                Command="{Binding AddCommand}"/>
+
+    </Grid>
+</UserControl>

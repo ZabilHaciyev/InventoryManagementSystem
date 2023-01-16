@@ -1,0 +1,145 @@
+﻿<Window x:Class="InventoryManagementSystem.MainWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InventoryManagementSystem"
+        xmlns:viewModels ="clr-namespace:InventoryManagementSystem.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1000" MinHeight="600" MaxHeight="600" MinWidth="1000" MaxWidth="1000" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModels:HomeViewModel}">
+            <local:HomeView></local:HomeView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:ProductViewModel}">
+            <local:ProductsView></local:ProductsView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:AddProductViewModel}">
+            <local:AddProductView></local:AddProductView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:OrderViewModel}">
+            <local:OrdersView></local:OrdersView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:AddOrderViewModel}">
+            <local:AddOrderView></local:AddOrderView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:WarehouseViewModel}">
+            <local:WarehouseView></local:WarehouseView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:DeleteDialogViewModel}">
+            <local:DeleteDialogView></local:DeleteDialogView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:EditProductViewModel}">
+            <local:EditProductView></local:EditProductView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:SellProductViewModel}">
+            <local:SellProductView></local:SellProductView>
+        </DataTemplate>
+    </Window.Resources>
+    <Window.DataContext>
+        <viewModels:MainViewModel></viewModels:MainViewModel>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Background="#0f0c29">
+
+            <StackPanel  Margin="0,0,0,0">
+
+                <ToggleButton
+                    Style="{DynamicResource MaterialDesignHamburgerToggleButton}"
+                    HorizontalAlignment="Left"
+                    Click="ToggleButton_Click"
+                    Foreground="WhiteSmoke"
+                    Margin="10">
+                </ToggleButton>
+
+
+                <StackPanel Visibility="Hidden" Name="MenuPanel">
+
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Home" Foreground="WhiteSmoke" Width="50" Height="50"/>
+                        <Button
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            Height="50"
+                            ToolTip=""
+                            Background="Transparent"
+                            Foreground="WhiteSmoke"
+                            Content="Home"
+                            Margin="0,0"
+                            materialDesign:ButtonAssist.CornerRadius="7"
+                            BorderBrush="Transparent"
+                            Command="{Binding NavToHomeCommand}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Cube" Foreground="WhiteSmoke" Width="50" Height="50"/>
+                        <Button
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            Height="50"
+                            ToolTip=""
+                            Background="Transparent"
+                            Foreground="WhiteSmoke"
+                            Content="Products"
+                            Margin="0,0"
+                            materialDesign:ButtonAssist.CornerRadius="7"
+                            BorderBrush="Transparent"
+                            Command="{Binding NavToProductCommand}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Cart" Foreground="WhiteSmoke" Width="50" Height="50"/>
+                        <Button
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            Height="50"
+                            ToolTip=""
+                            Background="Transparent"
+                            Foreground="WhiteSmoke"
+                            Content="Orders"
+                            Margin="0,0"
+                            materialDesign:ButtonAssist.CornerRadius="7"
+                            BorderBrush="Transparent"
+                            Command="{Binding NavToOrderCommand}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Warehouse" Foreground="WhiteSmoke" Width="50" Height="50"/>
+                        <Button
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            Height="50"
+                            ToolTip=""
+                            Background="Transparent"
+                            Foreground="WhiteSmoke"
+                            Content="Warehouses"
+                            Margin="0,0"
+                            materialDesign:ButtonAssist.CornerRadius="7"
+                            BorderBrush="Transparent"
+                            Command="{Binding NavToWarehouseCommand}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="ExitToApp" Foreground="WhiteSmoke" Width="50" Height="50"/>
+                        <Button
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            Height="50"
+                            ToolTip=""
+                            Background="Transparent"
+                            Foreground="WhiteSmoke"
+                            Content="Quit"
+                            Margin="0,0"
+                            materialDesign:ButtonAssist.CornerRadius="7"
+                            BorderBrush="Transparent"
+                            Click="Quit"/>
+                    </StackPanel>
+
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <ContentControl Grid.Column="1" Content="{Binding CurrentVM}"></ContentControl>
+
+    </Grid>
+
+</Window>
